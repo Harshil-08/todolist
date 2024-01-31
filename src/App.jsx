@@ -21,7 +21,7 @@ function App() {
 	function handleSubmit(e) {
 		e.preventDefault();
 		if (inputValue.trim() !== "") {
-			setTodos([...todos, { task: inputValue, isCompleted: false }]);
+			setTodos([...todos, inputValue]);
 			console.log(todos)
 			setInputValue("");
 		}
