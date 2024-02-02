@@ -65,7 +65,7 @@ function App() {
         {todos.map((todo, index) => (
           <div className="flex justify-between" key={index}>
             <li
-              className={`p-2 ${todo.isCompleted ? "line-through" : ""}`}
+              className={`p-2 ${todo.isCompleted ? "line-through" : ""} select-none`}
               onClick={() => handleClick(index)}
             >
               {todo.text}
