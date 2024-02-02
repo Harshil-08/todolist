@@ -28,9 +28,13 @@ function App() {
 
   const handleClick = (index) => {
     setTodos((prevTodos) => {
-      const updatedTodos = [...prevTodos];
-      updatedTodos[index].isCompleted = !updatedTodos[index].isCompleted;
-      return updatedTodos;
+      return prevTodos.map((todo, i) => {
+        if (i === index) {
+          return { ...todo, isCompleted: !todo.isCompleted };
+        } else {
+          return todo;
+        }
+      });
     });
   };
 
