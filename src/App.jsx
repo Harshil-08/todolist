@@ -40,46 +40,54 @@ function App() {
 
   function handleDelete(index) {
     const updatedTodos = todos.filter((_, i) => i !== index);
-    setTodos(updatedTodos);
+    setTodos(updatedTodos)
+    const newTodo = updatedTodos
+    newTodo[0].isCompleted=!newTodo[0].isCompleted;
+    setTodos(newTodo)
   }
 
   return (
-    <div className="flex flex-col justify-center items-center mt-64">
-      <form className="flex justify-center items-center w-full">
-        <input
-          className="w-1/2 p-2 outline-none rounded-full border-2 border-zinc-300 hover:drop-shadow-xl"
-          type="text"
-          value={inputValue}
-          placeholder="Enter your text here"
-          onChange={handleChange}
-        />
-        <button
-          type="submit"
-          className="w-32 p-2 border-2 rounded-xl font-semibold text-white bg-gray-500"
-          onClick={handleSubmit}
-        >
-          Submit
-        </button>
-      </form>
-      <ul className="w-1/2 gap-x-4 flex flex-col">
-        {todos.map((todo, index) => (
-          <div className="flex justify-between" key={index}>
-            <li
-              className={`p-2 ${todo.isCompleted ? "line-through" : ""} select-none`}
+    <>
+      <p className="sticky top-36 font-extrabold text-3xl md:text-6xl flex justify-center">Apna Todolist</p>
+      <div className="flex flex-col justify-center items-center mt-56">
+        <form className="flex justify-center items-center w-full">
+          <input
+            className="w-1/2 p-2 outline-none rounded-full border-2 border-zinc-300 hover:drop-shadow-lg"
+            type="text"
+            value={inputValue}
+            placeholder="Enter your text here"
+            onChange={handleChange}
+          />
+          <button
+            type="submit"
+            className="w-32 p-2 border-2 rounded-xl font-semibold text-white bg-gray-500"
+            onClick={handleSubmit}
+          >
+            Submit
+          </button>
+        </form>
+        <ul className="md:w-1/2 w-[300px] gap-x-4 flex flex-col">
+          {todos.map((todo, index) => (
+            <div className="flex justify-between items-center w-auto"
               onClick={() => handleClick(index)}
+              key={index}
             >
-              {todo.text}
-            </li>
-            <button
-              className="p-2 text-white bg-red-500 rounded-xl font-semibold mt-2"
-              onClick={() => handleDelete(index)}
-            >
-              Delete
-            </button>
-          </div>
-        ))}
-      </ul>
-    </div>
+              <li
+                className={`text-xl ${todo.isCompleted ? "line-through" : ""} select-none truncate`}
+              >
+                {todo.text}
+              </li>
+              <button
+                className="p-2 text-white bg-red-500 rounded-xl font-semibold mt-2"
+                onClick={() => handleDelete(index)}
+              >
+                Delete
+              </button>
+            </div>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
 
