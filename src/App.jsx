@@ -66,9 +66,9 @@ function App() {
         </form>
         <ul className="md:w-1/2 w-[300px] gap-x-4 flex flex-col">
           {todos.map((todo, index) => (
-            <div className="flex justify-between items-center w-auto"
+            <div className="flex justify-between items-center"
             >
-              <div className="flex gap-2">
+              <div className="flex gap-2 w-5/6 text-wrap">
               <input type="checkbox"
                 className=""
                 onClick={() => handleClick(index)}
@@ -77,7 +77,7 @@ function App() {
               ></input>
               
               <li
-                className={` ${todo.isCompleted ? "line-through" : ""} select-none truncate`}
+                className={` ${todo.isCompleted ? "line-through" : ""} select-none overflow-y-auto`}
               >
                 {todo.text}
               </li>
